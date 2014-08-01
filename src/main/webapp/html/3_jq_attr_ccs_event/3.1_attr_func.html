@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery attributes函数</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery的attributes类函数。主要用于对dom节点属性的操作
+			 * 注意：获取dom信息的时候尽量定位到一个dom 获取属性一般只能获取集合中的第一个。
+			 * 如果需要获得全部的，则需要 $("div").each() 方法遍历
+			 * 如果属性值不存在则会返回" undifined "
+			 */
+			function attrFunc() {
+				// addClass() 为dom元素指定class属性值，指定css
+				$("#header").addClass("className");
+				// removeClass() 为dom元素移除class属性的值
+				$("div").removeClass();
+				// toggleClass() 为dom元素添加或者移除class属性值，有则移除，无则添加
+				$("div").toggleClass("className");
+
+				// html() 设置或者获取dom元素中的html内容。html不带参数为获取，带参数则设置
+				$("div").html();
+				$("div").html("html内容改变");
+
+				// text() 设置或者获取dom元素中的text内容。带参数为获取，不带参数为设置
+				$("text").text();
+				$("text").text("修改内容");
+
+				// attr() 获取或设置元素属性；注意：设置class属性必须加引号
+				// 返回属性的值
+				$("#header").attr("class");
+				// 设置属性的值
+				$("#header").attr("class", "className");
+				// 设置多个属性的值，利用map
+				$("#header").attr({
+					height : "60",
+					width : "50"
+				});
+
+				// removeAttr()为匹配的dom元素移除属性。
+				// 注意：这个方法如果指定的属性是必须有默认值，则使用这个方法会将这个属性置为默认值。
+				// 如果元素属性没有默认值，则移除这个属性。返回值为undifined
+				$("#header").removeAttr("class");
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="testDIV">
+			test test test test test test
+
+			<table border="1">
+				<tr>
+					<td class="name" id="header">Header</td>
+				</tr>
+				<tr>
+					<td class="age">Data</td>
+				</tr>
+			</table>
+			<br>
+			<table border="1">
+				<tr>
+					<th>Header</th>
+				</tr>
+				<tr>
+					<td>Data</td>
+				</tr>
+			</table>
+			<p>
+				内容
+			</p>
+		</div>
+		<input type="button" name="some_name" value=" 测  试  " id="some_name" onclick="attrFunc()"/>
+	</body>
+</html>

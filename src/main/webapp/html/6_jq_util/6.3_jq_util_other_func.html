@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery 工具函数处理字符串</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery还有一些其他的函数。参见api
+			 */
+
+			/**
+			 * jquery封装的处理字符串的方法并不多
+			 */
+			function stringFunc() {
+				// trim() 去除字符串前后空格
+				var word = "  jquery  ";
+				var trimWord = $.trim(word);
+				alert(trimWord);
+			}
+
+			/**
+			 * jquery 判断函数
+			 */
+			function judgeFunc() {
+				// 判断是否是一个对象
+				$.isEmptyObject(obj);
+				// 判断是否是一个函数
+				$.isFunction(obj);
+				// 判断是否是xml节点
+				$.isXMLDoc(obj);
+				// 判断是否是js原生数组，并不是jquery dom集合
+				$.isArray(obj);
+			}
+
+			/**
+			 * dom包含关系
+			 */
+			function containsFunc() {
+				// 判断节点是否包含在另外一个节点，第一个参数包含第二个参数：true
+				$.contains(dom1, dom2);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value=" 测试字符串 " onclick="stringFunc()"/>
+	</body>
+</html>

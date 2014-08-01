@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>操作节点</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+		
+			/**
+			 * 利用js来操作dom
+			 * 1、利用innerHTML 或 innerText
+			 * 2、利用js的dom操作方法：createElement等
+			 */
+
+			//字符串拼接，js中利用 obj += sd 效率很低。js中拼接字符串是开销很大的。
+			function operInner() {
+				var divObj = document.getElementById("inner");
+				var str = '<p><font>innerhtml ceshi </font></p>';
+				divObj.innerHTML = str;
+			}
+
+			//利用js解析dom的 element 来实现
+			function operDomEmt() {
+				var divObj = document.getElementById("inner");
+				//创建元素
+				var oDiv = document.createElement("DIV");
+				//并增加节点
+				var oText = document.createTextNode("text");
+				oDiv.appendChild(oText);
+				divObj.appendChild(oDiv);
+
+				//移除节点
+				var pDiv = document.getElementById("innerDom");
+				divObj.removeChild(pDiv);
+			}
+
+			/**============================================================*/
+
+			/**
+			 * 利用jquery对dom节点操作
+			 */
+			function jqueryOperDom() {
+				var divObj = document.getElementById("inner");
+				//利用函数 jQuery(元素参数 )，返回的是jQuery对象
+				var dom1 = jQuery("<div/>");
+				var dom2 = jQuery("<div>jquery</div>");
+				var dom3 = jQuery("<div/>").attr("id", "ceshi");
+				//用$符号和jQuery一个效果
+				var dom4 = $("<div>jquery</div>");  
+			
+				divObj.innerHTML = dom1[0] + dom2[0].innerHTML + dom2[0] + dom2[0];
+			}
+
+		</script>
+
+	</head>
+	<body>
+		<div id="inner">
+			<p id="innerDom">
+				dom.需要移除的节点
+			</p>
+		</div>
+		<input type="button" name="some_name" value=" 操作dom  " onclick="jqueryOperDom()"  id="some_name"/>
+	</body>
+</html>

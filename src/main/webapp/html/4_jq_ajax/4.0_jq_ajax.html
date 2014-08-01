@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery ajax 底层</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery 包装了ajax的方法，并且生成了许多的方法 。
+			 * 1、快捷方法：get() post() load()；最方便也是最好用的
+			 *
+			 * 其他方法参考api
+			 * 2、底层方法：ajax() 只有一个参数options 参数有非常多的属性
+			 * 	ajaxSetup()
+			 *
+			 * 3、ajax帮助函数：
+			 * param()：将对象或者数组转换成字符串格式
+			 * 			例如:{name:john, age:25} ==> name=john&age=25
+			 * serialize()：将表单元素转换成字符串格式 ;
+			 * <input name="a" value="1"/>
+			 * <input name="b" value="2"/>
+			 * ==> a=1&b=2
+			 *
+			 * 4、ajax全局事件：
+			 * jQuery.ajaxSetup()
+			 * .ajaxComplete()	当 Ajax 请求完成时注册要调用的处理程序。这是一个 Ajax 事件。
+			 * .ajaxError()	当 Ajax 请求完成且出现错误时注册要调用的处理程序。这是一个 Ajax 事件。
+			 * .ajaxSend()	在 Ajax 请求发送之前显示一条消息。
+			 * .ajaxStart()	当首个 Ajax 请求完成开始时注册要调用的处理程序。这是一个 Ajax 事件。
+			 * .ajaxStop()	当所有 Ajax 请求完成时注册要调用的处理程序。这是一个 Ajax 事件。
+			 * .ajaxSuccess()	当 Ajax 请求成功完成时显示一条消息。
+			 * 
+			 * 5、ajax跨域处理：JSONP。
+			 * 
+			 */
+
+		</script>
+	</head>
+	<body>
+		<table border="0" cellspacing="5" cellpadding="5">
+			<tr>
+				<th>Header</th>
+			</tr>
+			<tr>
+				<td>Data</td>
+			</tr>
+		</table>
+	</body>
+</html>

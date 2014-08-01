@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery查找函数</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery查找函数
+			 */
+			function searchFunc() {
+				//children() 获取满足条件的元素的子元素，不考虑子集的子集
+				var children = $("div").children();
+
+				//parent() 获取满足条件的元素的父元素，只考虑第一父元素
+				var parent = $("div[id='testDIV']").parent();
+
+				//parents() 获取满足条件的元素的所有父元素。
+				var parent = $("#header").parents();
+
+				//closest() 从当前元素开始向上匹配指定条件的元素，满足就返回该元素
+				var closest = $("#header").closest("div");
+
+				//contents() 查找匹配元素内容的所有子节点，包括文本。
+				var contents = $("div").contents();
+
+				//find() 获取指定元素中具有特定条件的元素，非常常用
+				var find = $("div").find(".className");
+
+				//next() 获取指定元素的后一个同辈的元素。
+				var next = $("div").next();
+				//nextAll() 获取指定元素的后面所有的同辈的元素。
+				var nextAll = $("div").nextAll();
+
+				//prev() 获取指定元素的前一个同辈的元素。
+				var prev = $("div").prev();
+				//prevAll() 获取指定元素的前面所有同辈的元素。
+				var prevAll = $("#header").prev();
+
+				//offsetParent() 获取第一个有定位的元素的父类
+				//siblings() 获取指定元素的所有唯一同辈元素
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="testDIV" class="className">
+			test test test test test test
+			<table border="1">
+				<tr>
+					<td class="name" id="header">Header</td>
+				</tr>
+				<tr>
+					<td class="age">Data</td>
+				</tr>
+			</table>
+			<br>
+			<table border="1">
+				<tr>
+					<th>Header</th>
+				</tr>
+				<tr>
+					<td>Data</td>
+				</tr>
+			</table>
+		</div>
+		<input type="button" name="some_name" value=" 测  试  " id="some_name" onclick="seriesFunc()"/>
+	</body>
+</html>

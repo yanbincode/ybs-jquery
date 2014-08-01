@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery display 动画效果</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery动画的显示函数 show(),hide(),toggle()。
+			 */
+			
+			/**
+			 * show()：显示隐藏的匹配元素。
+			 *
+			 * show(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * easing:(Optional) 用来指定切换效果，默认是"swing"，可用参数"linear"
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function showFunc() {
+				// 无参，默认显示
+				$("#show").show();
+				// 慢显示
+				$("#show").show("slow");
+				// 显示完成触发执行事件
+				$("#show").show("slow", function() {
+					alert("ok");
+				});
+			}
+
+			/**
+			 * hide()：隐藏显示的元素
+			 *
+			 * hide(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function hideFunc() {
+				// 无参，默认隐藏
+				$("#hide").hide();
+				// 慢隐藏
+				$("#hide").hide("slow");
+				// 隐藏完成触发执行事件
+				$("#hide").hide("slow", function() {
+					alert("ok");
+				});
+			}
+
+			/**
+			 * toggle()：改变隐藏显示状态，隐藏执行则显示，显示则隐藏。
+			 *
+			 * toggle(speed,fn)
+			 *
+			 * 参数
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function toggleFunc() {
+				// 无参，默认显示
+				$("#show").toggle();
+				// 慢显示
+				$("#show").toggle("slow");
+				// 显示完成触发执行事件
+				$("#show").toggle("slow", function() {
+					alert("ok");
+				});
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="show" style="display:none;">
+			隐藏的元素用show()方法显示。
+		</div>
+		<div id="hide">
+			显示的元素用hide()方法隐藏。
+		</div>
+		<br>
+		<input type="button" value=" 点击show " onclick="showFunc()"/>
+		<input type="button" value=" 点击hide " onclick="hideFunc()"/>
+	</body>
+</html>

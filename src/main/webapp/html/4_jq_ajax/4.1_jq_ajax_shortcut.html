@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery ajax 快捷方法</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			
+			$.ajax({ 
+           type: "post", 
+            url: "Default.aspx", 
+            dataType: "json", 
+            success: function (data) { 
+                    $("input#showTime").val(data[0].demoData); 
+            }, 
+            error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                    alert(errorThrown); 
+            } 
+     });
+			
+			/**
+			 *　利用$.get()：发起一个get请求，获取数据。
+			 *
+			 * $.get(url,data,callback,type);
+			 *
+			 * 参数： url:待载入页面的URL地址；
+			 * 		 data:待发送 Key/value 参数。
+			 * 		 callback:载入成功时回调函数。
+			 * 		 type:返回内容格式，xml, html, script, json, text, _default。
+			 */
+			function ajaxGet() {
+				// // 请求无返回值
+				// $.get("/jquery/ajaxServlet");
+// 
+				// // 请求服务器，传送参数，无返回值
+				// $.get("/jquery/ajaxServlet", {
+					// name : "John",
+					// age : "26"
+				// });
+
+				// 请求，并返回调用回调函数，返回返回的值
+				//$.get("/ajaxServlet", ajaxCallback);
+
+				// //请求，传参，回调
+				$.get("/ajaxServlet", {
+					name : "John",
+					age : "26"
+				}, ajaxCallback);
+			}
+
+			/**
+			 * 发起一个get请求，返回json对象
+			 * $.getJSON(url,data,callback);
+			 *
+			 * 参数：
+			 * url:发送请求地址。
+			 * data:待发送 Key/value 参数。
+			 * callback:载入成功时回调函数。
+			 */
+			function ajaxGetJSON() {
+				// 方法使用基本和get()一样，只是返回值是json
+				$.getJSON("/jquery/ajaxServlet?name=John&age=26", ajaxCallback);
+			}
+
+			/** $.getScript() 查api */
+
+			/**
+			 * 发起一个post请求，获取数据
+			 *
+			 * $.post(url,[data],[callback],[type])
+			 *
+			 * 参数：
+			 * url:发送请求地址。
+			 * data:待发送 Key/value 参数。
+			 * callback:发送成功时回调函数。
+			 * type:返回内容格式，xml, html, script, json, text, _default。
+			 */
+			function ajaxPost() {
+				// 请求无返回值
+				$.post("/jquery/ajaxServlet");
+
+				// 请求服务器，传送参数，无返回值
+				$.post("/jquery/ajaxServlet", {
+					name : "John",
+					age : "26"
+				});
+
+				//请求，传参，回调
+				$.post("/jquery/ajaxServlet", {
+					name : "John",
+					age : "26"
+				}, ajaxCallback);
+
+				//请求，传参，回调，指定返回类型
+				$.post("/jquery/ajaxServlet", {
+					name : "John",
+					age : "26"
+				}, ajaxCallback, "json");
+			}
+
+			/**
+			 * 从服务端获取html内容，并且添加到匹配元素中。
+			 * 这个方法最大的作用是：异步加载页面
+			 *
+			 * $("#divName").load(url,[data,[callback]])
+			 *
+			 * post方式。
+			 *
+			 * 参数：
+			 * url:待装入 HTML 网页网址。
+			 * data:发送至服务器的 key/value 数据。在jQuery 1.3中也可以接受一个字符串了。
+			 * callback:载入成功时回调函数。 这个回调返回不了数据。因为跳转过程中response已经关闭了
+			 */
+			function ajaxLoad() {
+				// 直接载入页面
+				$("#divName").load("4.0_jq_ajax.html");
+
+				// 请求服务器，传参，返回数据到一个页面，将页面加载进元素
+				$("#divName").load("/jquery/ajaxServlet", {
+					method : "load",
+					name : "John",
+					age : "26"
+				});
+
+				// 请求，传参，载页面，回调
+				$("#divName").load("/jquery/ajaxServlet", {
+					method : "load",
+					name : "John",
+					age : "26"
+				}, function() {
+					alert("ok");
+				});
+			}
+
+			/**
+			 * ajax 回调函数：
+			 */
+			function ajaxCallback(data) {
+				alert("ok");
+				alert(data);
+				alert(data.name);
+				alert(data.age);
+				// 利用JSONArray转换的
+				alert(data[0]);
+				alert(data[0].name);
+				alert(data[0].age);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="some_name" value=" 测试ajax get()" id="some_name" onclick="ajaxGet()"/>
+		<br>
+		<input type="button" name="some_name" value=" 测试ajax getJSON()" onclick="ajaxGetJSON()"/>
+		<br>
+		<input type="button" name="some_name" value=" 测试ajax post()" onclick="ajaxPost()"/>
+		<br>
+		<input type="button" name="some_name" value=" 测试ajax load()" onclick="ajaxLoad()"/>
+		<div id="divName" style="border:1px pink solid;">
+			内容点击触发加载：
+		</div>
+	</body>
+</html>

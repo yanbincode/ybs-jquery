@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery face 渐变效果</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery动画的渐变效果函数 fadeIn(),fadeOut(),fadeTo()。
+			 */
+
+			/**
+			 * fadeIn()：使匹配对象渐变显示
+			 *
+			 * fadeIn(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function fadeInFunc() {
+				// 无参，默认显示
+				$("#show").fadeIn();
+				// 控制显示速度
+				$("#show").fadeIn("normal");
+				// 显示完调用函数
+				$("#show").fadeIn(4000, function() {
+					alert("ok");
+				});
+			}
+
+			/**
+			 * fadeOut()： 是匹配对象渐变隐藏
+			 *
+			 * fadeOut(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function fadeOutFunc() {
+				// 无参，默认隐藏
+				$("#hide").fadeOut();
+				// 参数：控制隐藏速度
+				$("#hide").fadeOut("normal");
+				// 隐藏完调用函数
+				$("#hide").fadeOut(4000, function() {
+					alert("ok");
+				});
+			}
+
+			/**
+			 * fadeTo()：指定不透明的元素渐变成指定透明度。
+			 *
+			 * fadeTo(speed,opacity,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * opacity:指定透明度，一个0至1之间表示透明度的数字。
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function fadeToFunc() {
+				// 渐变效果: 0-1 数字越小越透明
+				$("#fade").fadeTo(4000, 0.5);
+				// 渐变完成之后执行call
+				$("#fade").fadeTo("slow", 0.3, function() {
+					alert("ok");
+				})
+			}
+
+			/**
+			 * fadeToggle()：渐变状态转换，如果透明则显示，如果显示则透明
+			 *
+			 * fadeToggle(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function fadeToggleFunc() {
+				// 无参，默认显示
+				$("#show").fadeToggle();
+				// 控制显示速度
+				$("#show").fadeToggle("normal");
+				// 显示完调用函数
+				$("#show").fadeToggle(4000, function() {
+					alert("ok");
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="show" style="display:none;">
+			<img src="../image/gf.png" alt="pic" width="500" height="500"/>
+		</div>
+		<hr>
+		<div id="hide">
+			<img src="../image/gf.png" alt="pic" width="500" height="500"/>
+		</div>
+		<hr>
+		<div id="fade">
+			<img src="../image/gf.png" alt="pic" width="500" height="500"/>
+		</div>
+		<hr>
+		<input type="button"  value=" 渐变显示 " onclick="fadeInFunc()"/>
+		<br>
+		<input type="button"  value=" 渐变隐藏 " onclick="fadeOutFunc()"/>
+		<br>
+		<input type="button"  value=" 渐变透明 " onclick="fadeToFunc()"/>
+	</body>
+</html>

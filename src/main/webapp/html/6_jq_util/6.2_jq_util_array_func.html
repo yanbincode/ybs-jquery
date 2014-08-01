@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery 操作数组的工具类</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * 用jquery获取的节点，或者用name获取的dom节点都是数组或者集合。
+			 * jquery提供处理这些问题的方法。方法很多，可灵活使用参考api
+			 */
+
+			/**
+			 * each(): 通用例遍方法，可用于例遍对象和数组。
+			 *
+			 * $.each(object, callback)
+			 *
+			 * 参数：
+			 * object:需要例遍的对象或数组。
+			 * callback:每个成员/元素执行的回调函数。
+			 */
+			function eachFunc() {
+				// 遍历数组
+				$.each([0, 1, 2], function(i, n) {
+					alert("item # " + i + ":" + n);
+				})
+				// 遍历集合
+				$.each({
+					name : "John",
+					lang : "JS"
+				}, function(name, value) {
+					alert("Name: " + name + ", Value: " + value);
+				});
+
+				// 遍历dom集
+				$("div").each(function() {
+					// 利用jquery方式
+					alert($(this).attr("id") + " : " + $(this).text());
+					// 用js dom方式
+					alert(this.id + " : " + this.innerHTML);
+				});
+			}
+
+			/**
+			 * merge() ：将两个数组合并成一个
+			 *
+			 * $.merge(first,second)
+			 *
+			 * 注意：
+			 * 两个都必须是数组，并且是js原生的数组，
+			 * 第一个参数会被改变，第二个参数不会变。需要备份
+			 */
+			function mergeFunc() {
+				// 结果为：[0,1,2,2,3,4]
+				$.merge([0, 1, 2], [2, 3, 4])
+			}
+
+			/**
+			 * extend() ： 合并两个map对象
+			 *
+			 * $.extend(firstMap,secondMap)
+			 *
+			 * 注意：
+			 * 一个参数会被改变，需要备份。
+			 * 同样的key ，后一个会把前一个覆盖
+			 */
+			function extendFunc() {
+				var firstMap = {
+					name : john,
+					age : 20
+				};
+
+				var secondMap = {
+					name : lily,
+					age : 19,
+					gender : 0
+				};
+				// 最后结果会变成:firstMap={name:lily,age:19,gender:0}
+				$.extend(firstMap, secondMap);
+			}
+
+			/**
+			 * makeArray() : 数组类型转换,将jquery集转换成原生js数组
+			 */
+			function makeArrayFunc() {
+				// jquery对象集
+				var obj = $("div");
+				// js原生集合数组
+				var jsObjs = $.makeArray(obj);
+			}
+
+			/**
+			 * unique() : 将DOM集合中重复dom对象去除，并且按照html中出现的循序排序
+			 */
+		</script>
+	</head>
+	<body>
+		<div id="div_1">
+			div_1
+		</div>
+		<div id="div_2">
+			div_2
+		</div>
+		<div id="div_3">
+			div_3
+		</div>
+		<div id="div_4">
+			div_4
+		</div>
+		<div id="div_4">
+			div_4
+		</div>
+		<span id="span_1">span_1</span>
+		<span id="span_2">span_2</span>
+		<span id="span_3">span_3</span>
+		<span id="span_4">span_4</span>
+		<input type="button" value=" 测 试 " onclick="eachFunc()"/>
+	</body>
+</html>

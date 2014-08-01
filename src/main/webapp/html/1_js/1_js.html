@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>js的一些基础</title>
+		<script type="text/javascript" charset="utf-8">
+		
+			/**
+			 * 1、
+			 * undefined : 表示一个对象没有被定义或者没有被初始化
+			 * null : 表示一个尚未存在的对象的占位符
+			 * underfined是从null派生的；underfined == null 是 true的
+			 */
+
+			// 2、认识typeof
+			function typeofDemo() {
+				// typeof 用来返回指定对象的类型。返回的是字符
+				/*
+				 * undefined : 'undefined'
+				 * null : 'object'
+				 * string : 'string'
+				 * number : 'number'
+				 * boolean : 'Boolean'
+				 * function : 'function'
+				 * object : 'object'
+				 */
+				var str = "xxx"
+				alert( typeof str);
+			}
+
+			// 3、闭包 ： function 实例以及执行function实例时来自环境中的变量
+
+			// 4、function的认识：a、函数   b、声明对象
+			// 声明
+			function Car() {
+				this.color = "pink";
+			};
+			// 静态属性
+			Car.staticClass = function() {
+				alert("static");
+			}
+			// 实例属性
+			Car.prototype.instanceClass = function() {
+				alert("instance");
+			}
+			// 使用实例
+			function useCar() {
+				Car.staticClass();
+				var car = new Car();
+				alert(car.color);
+				car.instanceClass();
+
+			}
+
+			// dom节点
+			function dom() {
+				//html节点
+				var oHtml = document.documentElement;
+				//获取节点三种方式：
+				var domById = document.getElementById("id");
+				var domByName = document.getElementsByName("name"); //数组
+				var domByTag = document.getElementsByTagName("TD"); //数组
+			}
+		</script>
+
+	</head>
+	<body>
+		<input type="button" name="test" value="  测 试  " id="test" onclick="useCar()"/>
+	</body>
+</html>

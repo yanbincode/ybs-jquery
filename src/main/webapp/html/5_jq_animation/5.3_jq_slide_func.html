@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery 滑动效果</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery滑动效果函数：slideDown(),slideUp(),slideToggle()
+			 */
+
+			/**
+			 * slideDown()：将隐藏的元素，向下渐渐显示。
+			 *
+			 * slideDown(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function slideDownFunc() {
+				// 默认无参
+				$("#show").slideDown();
+				// 显示速度参数
+				$("#show").slideDown("slow");
+				// 显示完成之后调用函数
+				$("#show").slideDown(4000, function() {
+					alert("ok");
+				});
+			}
+
+			/**
+			 * slideUp()：将显示的元素，向上渐渐隐藏。
+			 *
+			 * slideUp(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function slideUpFunc() {
+				// 默认无参
+				$("#hide").slideUp();
+				// 隐藏速度参数
+				$("#hide").slideUp("slow");
+				// 隐藏完成之后调用函数
+				$("#hide").slideUp(4000, function() {
+					alert("ok");
+				});
+			}
+
+			/**
+			 * slideToggle()：显示状态切换，显示则向上隐藏，隐藏则向下显示
+			 *
+			 * slideToggle(speed,fn)
+			 *
+			 * 参数：
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function slideToggleFunc() {
+				// 默认无参
+				$("#show").slideToggle();
+				// 显示或隐藏速度参数
+				$("#show").slideToggle("slow");
+				// 显示或隐藏完成之后调用函数
+				$("#show").slideToggle(4000, function() {
+					alert("ok");
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="show" style="display:none;">
+			<img src="../image/gf.png" alt="pic" width="500" height="500"/>
+		</div>
+		<hr>
+		<div id="hide">
+			<img src="../image/gf.png" alt="pic" width="500" height="500"/>
+		</div>
+		<hr>
+		<input type="button"  value=" 渐变向下显示 " onclick="slideDownFunc()"/>
+		<br>
+		<input type="button"  value=" 渐变向上隐藏 " onclick="slideUpFunc()"/>
+		<br>
+		<input type="button"  value=" 渐变改变状态 " onclick="slideToggleFunc()"/>
+	</body>
+</html>

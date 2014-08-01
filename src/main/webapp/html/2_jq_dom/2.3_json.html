@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>json的理解</title>
+
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * josn:javascript object notation  js对象表示法。是一种数据格式
+			 */
+			//例子, student对象。
+			//声明
+			var student = {
+				name : 'yanbin', //属性用逗号隔开
+				age : 23,
+				school : {
+					sName : 'hafo'
+				},
+			};
+			
+			//使用
+			function user() {
+				alert(student.name);
+				alert(student.school.sName);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="some_name" value="  测试  " id="some_name" onclick="user()"/>
+	</body>
+</html>

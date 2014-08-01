@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery选择器</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery 选择器:基本选择器和高级选择器
+			 *
+			 */
+			//1、id选择器
+			function idChoose() {
+				//id选择器
+				var obj = $("#testDIV");
+
+				//这个是jq对象，不是dom对象，是dom对象的集合
+				alert(obj.size());
+				//集合长度，就算是0也不会为null
+				alert(obj[0].innerHTML);
+				obj.html("修改后的内容！");
+				alert(obj.html);
+			}
+
+			//2、element选择器，根据tag来选择
+			function tagChoose() {
+				//元素选择器
+				var tags = $("td");
+
+				alert(tags.size());
+				alert(tags[0].innerHTML);
+				alert(tags[1].innerHTML);
+				//获取到td tag再根据class的值获取到对应的元素节点
+				var onlyTd = $("td").find(".age");
+				alert(onlyTd.size());
+			}
+
+			//3、样式选择器（style） 根据class名
+			function classChoose() {
+				//样式选择器
+				var classObj = $(".age");
+
+				alert(classObj.size());
+				classObj.html("修改后的内容！");
+				alert(classObj.html);
+			}
+
+			//4、全选择器，选中所有元素
+			function allChoose() {
+				//全选择器
+				var allObj = $("*");
+
+				alert(allObj.size());
+				allObj.html("修改后的内容！");
+			}
+
+			//5、多选择器，用逗号隔开
+			function moreChoose() {
+				//多选择器
+				var moreObj = $("#testDIV,td,.age");
+
+				alert(moreObj.size());
+				moreObj.html("修改后的内容！");
+			}
+
+			//===========================================//
+			//6、层次选择器
+			function stepChoose() {
+				//id为testDIV层下的所有table元素
+				var stepObj = $("#testDIV table");
+				//id为testDIV子下的table元素。不包括子下的子
+				var subObj = $("#testDIV>table");
+
+				alert(stepObj.size());
+				stepObj.html("修改内容！");
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="testDIV">
+			test test test test test test
+
+			<table border="1">
+				<tr>
+					<td class="name">Header</td>
+				</tr>
+				<tr>
+					<td class="age">Data</td>
+				</tr>
+			</table>
+			<br>
+			<table border="1">
+				<tr>
+					<th>Header</th>
+				</tr>
+				<tr>
+					<td>Data</td>
+				</tr>
+			</table>
+		</div>
+
+		<input type="text" name="name" value="test" id="name"/>
+
+		<input type="button" value="  id选择器   " onclick="idChoose()"/>
+		<br>
+		<input type="button" value=" 元素选择器 " onclick="tagChoose()"/>
+		<br>
+		<input type="button" value=" 样式选择器 " onclick="classChoose()"/>
+		<br>
+		<input type="button" value="   全选择器 " onclick="allChoose()"/>
+		<br>
+		<input type="button" value="   多选择器 " onclick="moreChoose()"/>
+		<br>
+		<input type="button" value=" 层此选择器 " onclick="stepChoose()"/>
+		<br>
+	</body>
+</html>

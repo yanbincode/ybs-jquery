@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery对象</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jQuery.fn
+			 */
+			//1、dom对象转换成jQuery对象
+			function dom2Jq() {
+				var dom = document.getElementById("name");
+				// a、jQuery(dom) 转换对象
+				jQuery(dom).css("border", "solid 2px #FF0000");
+				// b、$(dom) 转换对象
+				$(dom).css("border", "solid 1px blue");
+			}
+
+			//2、jQuery对象转换为dom对象
+			function jq2Dom() {
+				// $("#name")[0] 集合中的一个
+				var dom = $("#name")[0];
+				alert(dom.innerHTML);
+			}
+
+			//3、解决"$" 跟其他类库的冲突
+			function noCon() {
+				//把$控制权转交给第一个实现的类库
+				jQuery.noConflict();
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="name">
+			test
+		</div>
+		<input type="button" name="some_name" value="" id="some_name" onclick="jq2Dom()"/>
+	</body>
+</html>

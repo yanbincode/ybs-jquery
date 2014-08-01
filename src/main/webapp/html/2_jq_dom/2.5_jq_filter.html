@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery 过滤器</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * 过滤器 ：其实也是选择器，但和选择器还是有区别的，作用是在已经选择的元素中进行"过滤"操作
+			 * 过滤器单独用和 $("*") 一样，性能很低，应该跟在选择器后面使用。
+			 * 属性过滤器最常用的过滤器，可以完成很多其他的过滤器的功能。记不住那么多就记住这些，可以完成大部分功能
+			 * 注意：利用过滤器之前尽量把范围缩小，而提高效率
+			 */
+			//======================基本过滤器=======================
+			function filter() {
+				//第一个元素
+				var first = $("div:first");
+				//最后一个元素
+				var last = $("div:last");
+				//index偶数的元素
+				var even = $("div:even");
+				//index奇数的元素
+				var odd = $("div:odd");
+				//指定index的元素, 元素从0开始
+				var index = $("div:eq(0)");
+				//大于指定index
+				var gt = $("div:gt(0)");
+				//小于指定index
+				var lt = $("div:lt(5)");
+				//指定选择器下，指定不包含 ”某项属性“的元素
+				var not = $("div:not([style])");
+			}
+
+			//=========================内容过滤器===============================
+			function contentFilter() {
+				//包含某些内容的节点；内容指定的是文本
+				var contains = $("div:contains('yanbin')");
+				//包含元素的元素；内容是指定的节点元素
+				var has = $("div:has(table)");
+				//空元素，该元素下没有子元素或者文本
+				var empty = $("div:empty");
+				//匹配含有子元素或文本元素
+				var parent = $("div:parent");
+			}
+
+			//==========================可见性过滤器======================================
+			function showFilter() {
+				//获取所有隐藏的节点：display : none;
+				var hidden = $("div:hidden");
+				//获取所有显示的节点：display : block;
+				var visible = $("div:visible");
+				//注意：css 中的visibility ：hidden也能隐藏，但不属于这个过滤器范围内
+			}
+
+			// =========================属性过滤器========================================
+			function attrFilter() {
+				//包含某个属性的元素
+				var attr = $("div[style]");
+				//包含某个属性且属性值为指定的值
+				var attrValue = $("div[name='test']");
+				//包含属性但属性值不为指定的值
+				var attrNotValue = $("div[name!='test']");
+				//包括属性且属性值得开头为指定的值
+				var attrHeadValue = $("div[name^='te']");
+				//包括属性且属性值得结尾为指定的值
+				var attrLetterValue = $("div[name$='st']");
+				//包括属性且属性值包含指定的值
+				var attrConValue = $("div[name*='es']");
+				//复合以上过滤,满足多个条件
+				var attrStep = $("div[id][name='test']");
+			}
+
+			// =========================子元素过滤器========================================
+			function subEltFilter() {
+				// 注意：这类过滤器使用并不平常。用的时候查询API。
+			}
+
+			// =========================表单过滤器========================================
+			function formFilter() {
+				//======表单类型=====
+				//匹配input textarea select button 查找所有form元素
+				var form = $(":input");
+				//匹配 文本框
+				var text = $(":text");
+				//密码框
+				var password = $(":password");
+				//单选按钮
+				var radio = $(":radio");
+				//复选框
+				var checkbox = $(":checkbox");
+				//提交按钮
+				var submit = $(":submit");
+				//所有图像
+				var image = $(":image");
+				//重置按钮
+				var reset = $(":reset");
+				//普通按钮
+				var button = $(":button");
+				//文件域
+				var file = $(":file");
+
+				//=========表单属性:可以非常快的定位，非常实用=========
+				//匹配所有可用的元素
+				var enabled = $("input:enabled");
+				//所有不可用的元素
+				var disabled = $("input:disabled");
+				//所有选中的元素
+				var checked = $("input:checked");
+				//所有option选中的元素
+				var selected = $("input:selected");
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<div id="super">
+			<div id="left" style="border:1px red solid;">
+				yanbin
+				<table border="1">
+					<tr>
+						<th>Header</th>
+					</tr>
+					<tr>
+						<td>Data</td>
+					</tr>
+				</table>
+			</div>
+			<br>
+			<div id="middle" style="border:1px gray solid;">
+				<table border="1">
+					<tr>
+						<th>Header</th>
+					</tr>
+					<tr>
+						<td>Data</td>
+					</tr>
+				</table>
+				<br>
+				<table border="1">
+					<tr>
+						<th>Header</th>
+					</tr>
+					<tr>
+						<td>Data</td>
+					</tr>
+				</table>
+			</div>
+			<br>
+			<div id="right" style="border:1px pink solid;">
+				<table border="1">
+					<tr>
+						<th>Header</th>
+					</tr>
+					<tr>
+						<td>Data</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<br>
+		<input type="button" name="some_name" value=" 测  试  " id="some_name" onclick="filter()"/>
+	</body>
+</html>

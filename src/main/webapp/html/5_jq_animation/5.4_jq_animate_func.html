@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery 自定义动画</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * jquery自定义动画函数：animate(), stop(),delay()
+			 * jquery的执行动画都是有先后顺序的，存储在一个队列中，名为"fx"
+			 * $.fx.off：关闭所有动画，将所有元素设置为最终状态，但没有动画
+			 */
+
+			/**
+			 * animate()：用于创建自定义动画的函数。
+			 *
+			 * animate(style,speed,fn)
+			 *
+			 * 参数：
+			 * style:一组包含作为动画属性和终值的样式属性和及其值的集合。包含的就是CSS属性。(具体参考api)
+			 * speed:三种预定速度之一的字符串("slow","normal","fast")或表示动画时长的毫秒数值(如：1000)
+			 * fn:在动画完成时执行的函数，每个元素执行一次。
+			 */
+			function animateFunc() {
+				// 自定义参数的改变
+				$("#hide").animate({
+					width : "300px",
+					height : "300px"
+				}, 4000);
+			}
+
+			/**
+			 * stop()：停止所有在指定元素上正在运行的动画。
+			 *
+			 * stop(stopAll,goToEnd)
+			 *
+			 * 参数：
+			 * stopAll：规定是否停止被选元素的所有加入队列的动画。
+			 * goToEnd：规定是否允许完成当前的动画。
+			 *
+			 */
+			function stopFunc() {
+				// 停止当前的动画
+				$("#hide").stop(true);
+			}
+
+			/**
+			 * delay()：为动画设置延迟执行。
+			 *
+			 * delay(duration,queueName)
+			 *
+			 * 参数：
+			 * duration:延时时间，单位：毫秒
+			 * queueName:队列名词，默认是Fx，动画队列。
+			 */
+			function delayFunc() {
+				// 隐藏 延迟1秒再显示
+				$('#hide').slideUp(3000).delay(1000).slideDown(4000);
+			}
+		</script>
+
+	</head>
+	<body>
+		<div id="hide">
+			<img src="../image/gf.png" alt="pic" width="500" height="500"/>
+		</div>
+		<hr>
+		<input type="button"  value=" 自定义变化 " onclick="animateFunc()"/>
+		<br>
+		<input type="button"  value=" 停止动画 " onclick="stopFunc()"/>
+		<br>
+		<input type="button"  value=" 延迟动画效果 " onclick="delayFunc()"/>
+	</body>
+</html>

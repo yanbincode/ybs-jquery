@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery 事件</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * 在html上加上事件。实际上是创建了一个匿名函数
+			 *
+			 * document.getElementById("divName").onclick = function(event) {
+			 * 		jsEvent();
+			 * }
+			 */
+
+			function jsEvent() {
+				alert("ok");
+			}
+
+			/**
+			 * jquery事件的操作，可以很方便
+			 */
+			function jqEvent() {
+				// 事件的绑定
+				// bind("事件名", function{}) ：给元素绑定事件。
+				$("#some_name").bind("click", function(obj) {
+					alert("ok")
+				});
+				// 指定函数名
+				$("#some_name").bind("click.funName", function(obj) {
+					alert("ok")
+				});
+				// 多事件绑定
+				$("#some_name").bind({
+					click : function() {
+						alert("event1");
+					},
+					blur : function() {
+						alert("event2");
+					}
+				});
+
+				// unbind("事件名") ：给元素解除绑定事件
+				$("#some_name").unbind("click");
+				// 解除触发事件上指定的函数
+				$("#some_name").unbind("click.funName");
+			}
+
+			/**
+			 * jquery事件方法：window 窗口类的方法
+			 */
+			function windowEvent() {
+				// load()：在windos元素都加载完成之后触发
+				$(window).load(function() {
+					alert("load");
+				});
+
+				// ready()：只有document有，当所有的dom加载完之后调用
+				$("document").ready(function() {
+					alert("ready");
+				});
+
+				// unload()：在window关闭或跳转会触发，url发生改变
+				$(window).unload(function() {
+					alert("unload welcome back");
+				});
+
+				// resize()：窗口大小变化时，重置window的大小的值。注意这会频繁调用。
+				$(window).resize(function() {
+					alert("width:" + $(window).width());
+					alert("height:" + $(window).height());
+				});
+
+				// scroll()：窗口划动触发的事件
+				$(window).scroll(function() {
+					alert("scroll");
+				});
+
+			}
+
+			/**
+			 * js常用的事件，执行一次绑定一次
+			 */
+			function useEvent() {
+				// blur() 失去焦点事件
+				$("#jstext").blur(function() {
+					alert("blur");
+				});
+
+				// click() 单击事件
+				$("#jsbutton").click(function() {
+					alert("click");
+				});
+
+				// dblclick() 双击事件
+				$("#jsbutton").dblclick(function() {
+					alert("dblclick");
+				});
+
+				// focus() 获取焦点
+				$("#jstext").focus(function() {
+					alert("focus");
+				});
+
+				// change() 表单内容变化触发事件
+				$("#jsradio_1").change(function() {
+					alert($(this).val());
+				});
+
+				// select() 选中文本框或文本域中的内容触发
+				$("#jstext1").select(function() {
+					alert("select");
+				});
+
+				// submit() 表单提交事件。form元素触发
+				// $("form").submit();
+
+				// keydown() 按下键盘触发
+				$("#jstext2").keydown(function() {
+					alert("keydown");
+				});
+
+				// keyup() 键盘释放事件
+				$("#jstext2").keyup(function() {
+					alert("keyup");
+				});
+
+				// mouseover() 鼠标移到元素触发
+				$("#jdiv").mouseover(function() {
+					alert("mouseover");
+				});
+
+				// mouseout() 鼠标移开元素触发
+				$("#jdiv").mouseout(function() {
+					alert("mouseout");
+				});
+
+				// keypress() 和keydown一样，区别是触发多次
+				// focusin() 自己或其子元素获取焦点触发
+				// focusout() 自己或其子元素失去焦点触发
+				// mousedown() 鼠标点下触发
+				// mouseup() 鼠标释放触发
+				// mouseenter()
+				// mouseleave()
+				// mousemove()
+				// mouseout([[data],fn])
+				// mouseover([[data],fn])
+
+			}
+
+		</script>
+
+	</head>
+	<body>
+		<form action="3_submit" method="get" accept-charset="utf-8">
+			<div id="divName" onclick="jsEvent()">
+				测 试
+			</div>
+			<input type="text" name="jstext" value="" id="jstext"/>
+			<br>
+			<input type="text" name="jstext1" value="测试selected" id="jstext1"/>
+			<br>
+			<input type="text" name="jstext2" value="测试按下，按上键盘" id="jstext2"/>
+			<br>
+			<input type="radio" name="jsradio" id="jsradio_1" value="0"/>
+			男
+			<input type="radio" name="jsradio" id="jsradio_2" value="1"/>
+			男
+			<br>
+			<div id="jdiv" style="background-color:pink;">
+				测试鼠标移动
+			</div>
+			<input type="button" name="some_name" onclick="useEvent()" value="测试" id="some_name"/>
+			<input type="button" name="jsbutton" value="点击事件" id="jsbutton"/>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<a href="#"> 测 试 </a>
+		</form>
+	</body>
+</html>

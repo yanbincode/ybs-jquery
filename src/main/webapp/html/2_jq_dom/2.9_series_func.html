@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>jquery串联函数</title>
+		<script type="text/javascript" charset="utf-8" src="../../js/jquery-1.7.1.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * 串联函数：其实和过滤函数类似。并没有本质区别。是对jquery对象集合再做处理
+			 */
+			function seriesFunc() {
+				// add()：在jquery对象下添加元素。
+				$("div").add("<span>add()</span>");
+				// addSelf()：将之前查找的元素合并到当前元素中
+				$("div").find("table").addSelf().css("border-color", "pink");
+				// end()：恢复一次破坏性操作
+			}
+		</script>
+
+	</head>
+	<body>
+		<div id="testDIV">
+			test test test test test test
+
+			<table border="1">
+				<tr>
+					<td class="name">Header</td>
+				</tr>
+				<tr>
+					<td class="age">Data</td>
+				</tr>
+			</table>
+			<br>
+			<table border="1">
+				<tr>
+					<th>Header</th>
+				</tr>
+				<tr>
+					<td>Data</td>
+				</tr>
+			</table>
+		</div>
+		<input type="button" name="some_name" value=" 测  试  " id="some_name" onclick="seriesFunc()"/>
+	</body>
+</html>
